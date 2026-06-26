@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import Skills from '../components/sections/Skills.astro';
+import Projects from '../components/sections/Projects.astro';
+import Achievements from '../components/sections/Achievements.astro';
+import Education from '../components/sections/Education.astro';
+import Certifications from '../components/sections/Certifications.astro';
+import GitHubStats from '../components/sections/GitHubStats.astro';
+import Resume from '../components/sections/Resume.astro';
+import Contact from '../components/sections/Contact.astro';
+---
+
+<BaseLayout isHome={true}>
+  <!-- Hero Section -->
+  <Hero />
+  
+  <!-- About Section -->
+  <About />
+  
+  <!-- Skills Section -->
+  <Skills />
+  
+  <!-- Projects Section -->
+  <Projects />
+  
+  <!-- Achievements Section -->
+  <Achievements />
+  
+  <!-- Education Section -->
+  <Education />
+  
+  <!-- Certifications Section -->
+  <Certifications />
+  
+  <!-- GitHub Activity Section -->
+  <GitHubStats />
+  
+  <!-- Resume Download CTA Band -->
+  <Resume />
+  
+  <!-- Contact Form Section -->
+  <Contact />
+</BaseLayout>

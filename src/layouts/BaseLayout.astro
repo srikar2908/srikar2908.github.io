@@ -1,0 +1,120 @@
+---
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  isHome?: boolean;
+}
+
+const {
+  title = "Srikar Kukkadapu — Python Developer & AI Engineer",
+  description = "Python Developer, AI Engineer, and Backend Developer specializing in FastAPI, LangGraph, Machine Learning, and scalable AI systems.",
+  isHome = false,
+} = Astro.props;
+
+const siteUrl = "https://srikar2908.github.io";
+const ogImageUrl = `${siteUrl}/og-image.png`;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Srikar Kukkadapu, Python Developer, AI Engineer, FastAPI, LangGraph, Machine Learning, Backend Developer, Vijayawada, Software Engineer Portfolio" />
+    <meta name="author" content="Srikar Kukkadapu" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    
+    <!-- Theme Script to Prevent Flash -->
+    <script is:inline>
+      const getTheme = () => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      };
+      
+      const theme = getTheme();
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    </script>
+    
+    {isHome && (
+      <script type="application/ld+json" is:inline>
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Srikar Kukkadapu",
+          "url": "https://srikar2908.github.io",
+          "email": "srikar.kukkadapu666@gmail.com",
+          "sameAs": [
+            "https://www.linkedin.com/in/srikarkukkadapu/",
+            "https://github.com/srikar2908"
+          ],
+          "jobTitle": "Python Developer & AI Engineer",
+          "description": "Python Developer, AI Engineer, and Backend Developer specializing in FastAPI, LangGraph, Machine Learning.",
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Velagapudi Ramakrishna Siddhartha Engineering College"
+          }
+        }
+      </script>
+    )}
+  </head>
+  <body class="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300">
+    <!-- Scroll Progress Bar -->
+    <div 
+      id="scroll-progress" 
+      class="fixed top-0 left-0 right-0 h-[2px] bg-accent z-50 origin-left scale-x-0 transition-transform duration-75"
+    ></div>
+    
+    <Header />
+    
+    <main class="flex-grow">
+      <slot />
+    </main>
+    
+    <Footer />
+    
+    <script>
+      // Scroll Progress Indicator
+      window.addEventListener('scroll', () => {
+        const scrollProgress = document.getElementById('scroll-progress');
+        if (scrollProgress) {
+          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = totalHeight > 0 ? window.scrollY / totalHeight : 0;
+          scrollProgress.style.transform = `scaleX(${progress})`;
+        }
+      });
+    </script>
+  </body>
+</html>

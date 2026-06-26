@@ -1,0 +1,109 @@
+---
+import { personalInfo } from '../../data/personal.ts';
+
+const username = personalInfo.github;
+
+// Light mode stats card URLs
+const statsLight = `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=default&hide_border=true&bg_color=00000000&title_color=2563EB&icon_color=2563EB&text_color=0A0A0A`;
+const langsLight = `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&hide_border=true&bg_color=00000000&title_color=2563EB&text_color=0A0A0A`;
+const streakLight = `https://streak-stats.demolab.com/?user=${username}&hide_border=true&background=00000000&ring=2563EB&fire=2563EB&currStreakLabel=2563EB`;
+
+// Dark mode stats card URLs
+const statsDark = `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=dark&hide_border=true&bg_color=00000000&title_color=3B82F6&icon_color=3B82F6&text_color=FAFAFA`;
+const langsDark = `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&hide_border=true&bg_color=00000000&title_color=3B82F6&text_color=FAFAFA`;
+const streakDark = `https://streak-stats.demolab.com/?user=${username}&theme=dark&hide_border=true&background=00000000&ring=3B82F6&fire=3B82F6&currStreakLabel=3B82F6`;
+---
+
+<section id="github" class="py-20 lg:py-28 border-t border-border bg-surface-light dark:bg-surface-dark transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-4 md:px-8">
+    <div class="mb-16 text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-accent mb-2 block">GitHub Activity</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3 text-primary">
+        Open Source Contributions
+      </h2>
+      <p class="text-muted-foreground max-w-md mx-auto text-sm sm:text-base">
+        A real-time overview of my commit streak, language breakdown, and repository stats.
+      </p>
+    </div>
+
+    <!-- Stats Cards Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+      <!-- Stats Card -->
+      <div class="glass-card p-4 sm:p-6 flex items-center justify-center min-h-[220px]">
+        <img 
+          src={statsLight} 
+          alt="Srikar's GitHub Stats" 
+          loading="lazy" 
+          class="github-stats-light max-w-full h-auto"
+        />
+        <img 
+          src={statsDark} 
+          alt="Srikar's GitHub Stats (Dark)" 
+          loading="lazy" 
+          class="github-stats-dark max-w-full h-auto hidden"
+        />
+      </div>
+
+      <!-- Top Languages Card -->
+      <div class="glass-card p-4 sm:p-6 flex items-center justify-center min-h-[220px]">
+        <img 
+          src={langsLight} 
+          alt="Srikar's Top Languages" 
+          loading="lazy" 
+          class="github-stats-light max-w-full h-auto"
+        />
+        <img 
+          src={langsDark} 
+          alt="Srikar's Top Languages (Dark)" 
+          loading="lazy" 
+          class="github-stats-dark max-w-full h-auto hidden"
+        />
+      </div>
+
+      <!-- Streak Card -->
+      <div class="glass-card p-4 sm:p-6 flex items-center justify-center min-h-[220px]">
+        <img 
+          src={streakLight} 
+          alt="Srikar's GitHub Streak" 
+          loading="lazy" 
+          class="github-stats-light max-w-full h-auto"
+        />
+        <img 
+          src={streakDark} 
+          alt="Srikar's GitHub Streak (Dark)" 
+          loading="lazy" 
+          class="github-stats-dark max-w-full h-auto hidden"
+        />
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="text-center">
+      <a 
+        href={personalInfo.githubUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="inline-flex items-center gap-1.5 px-6 py-3 text-sm font-semibold text-accent-foreground bg-accent hover:bg-accent-hover rounded-xl shadow-sm hover:shadow transition-colors"
+      >
+        View GitHub Profile
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  /* Toggle GitHub statistics widgets based on Active theme classes */
+  .dark img.github-stats-light {
+    display: none !important;
+  }
+  .dark img.github-stats-dark {
+    display: block !important;
+  }
+  html:not(.dark) img.github-stats-light {
+    display: block !important;
+  }
+  html:not(.dark) img.github-stats-dark {
+    display: none !important;
+  }
+</style>

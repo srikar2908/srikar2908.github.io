@@ -1,0 +1,52 @@
+---
+import ThemeToggle from './ThemeToggle.tsx';
+import MobileNav from './MobileNav.tsx';
+import { personalInfo } from '../../data/personal.ts';
+
+const navLinks = [
+  { name: 'Home', href: '/#' },
+  { name: 'About', href: '/#about' },
+  { name: 'Skills', href: '/#skills' },
+  { name: 'Projects', href: '/#projects' },
+  { name: 'GitHub', href: '/#github' },
+  { name: 'Contact', href: '/#contact' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-40 bg-background/70 backdrop-blur-md border-b border-border transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="text-xl font-extrabold tracking-wider font-heading text-primary select-none hover:opacity-80 transition-opacity">
+      Srikar.
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-6">
+      {navLinks.map((link) => (
+        <a 
+          href={link.href} 
+          class="text-sm font-medium text-muted-foreground hover:text-accent transition-colors relative py-1.5 group"
+        >
+          {link.name}
+          <span class="absolute bottom-0 left-0 w-full h-[2px] bg-accent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out-expo"></span>
+        </a>
+      ))}
+    </nav>
+
+    <!-- Toolbar Widgets -->
+    <div class="flex items-center gap-3">
+      <ThemeToggle client:load />
+      
+      <a 
+        href={personalInfo.resumeUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-border bg-transparent hover:bg-secondary/50 rounded-xl text-sm font-semibold transition-colors"
+      >
+        Resume
+      </a>
+      
+      <MobileNav client:load resumeUrl={personalInfo.resumeUrl} />
+    </div>
+  </div>
+</header>

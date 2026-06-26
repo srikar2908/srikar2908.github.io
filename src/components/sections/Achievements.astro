@@ -1,0 +1,64 @@
+---
+import { achievementsList } from '../../data/achievements.ts';
+---
+
+<section id="achievements" class="py-20 lg:py-28 transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-4 md:px-8">
+    <div class="mb-16 text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-accent mb-2 block">Achievements</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3 text-primary">
+        Recognitions & Hackathons
+      </h2>
+      <p class="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
+        Awards won for technical execution, engineering design, and real-world deployment.
+      </p>
+    </div>
+
+    <!-- Achievements Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {achievementsList.map((item) => (
+        <div class="glass-card p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden h-full group hover:border-accent/30 transition-all duration-300">
+          
+          <!-- Date Badge (Top-Right) -->
+          <div class="absolute top-6 right-6 px-2.5 py-1 text-xs font-semibold text-accent bg-accent/10 border border-accent/25 rounded-md">
+            {item.date}
+          </div>
+
+          <div>
+            <!-- Icon -->
+            <div class="mb-5 text-accent p-2.5 bg-secondary border border-border group-hover:border-accent/20 rounded-xl inline-flex items-center justify-center transition-colors">
+              {item.icon === "trophy" ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"></path><path d="M12 2a6.38 6.38 0 0 1 6 6.5A6.5 6.5 0 0 1 12 15a6.5 6.5 0 0 1-6-6.5A6.38 6.38 0 0 1 12 2z"></path></svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><circle cx="12" cy="11" r="3"></circle></svg>
+              )}
+            </div>
+
+            <!-- Title & Org -->
+            <h3 class="text-xl font-bold tracking-tight text-primary mb-1 pr-20 group-hover:text-accent transition-colors leading-snug">
+              {item.title}
+            </h3>
+            <span class="text-xs font-semibold text-muted-foreground block mb-4 uppercase tracking-wider">
+              {item.org}
+            </span>
+
+            <!-- Description -->
+            <p class="text-sm text-muted-foreground leading-relaxed mb-6">
+              {item.description}
+            </p>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1.5 border-t border-border/50 pt-4 w-full">
+            {item.tags.map((t) => (
+              <span class="px-2.5 py-1 text-xs font-semibold bg-secondary text-secondary-foreground rounded-full border border-border">
+                {t}
+              </span>
+            ))}
+          </div>
+
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

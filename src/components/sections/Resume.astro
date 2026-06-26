@@ -1,0 +1,33 @@
+---
+import { personalInfo } from '../../data/personal.ts';
+---
+
+<section class="py-16 md:py-24 dot-grid border-t border-border transition-colors duration-300 relative overflow-hidden text-center px-4">
+  <!-- Glowing subtle spot -->
+  <div class="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent pointer-events-none"></div>
+
+  <div class="max-w-3xl mx-auto flex flex-col items-center relative z-10">
+    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-primary">
+      Want to know more?
+    </h2>
+    <p class="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl mb-8">
+      Download my resume for a complete overview of my experience, skills, and projects.
+    </p>
+
+    <!-- Large CTA Button -->
+    <a 
+      href={personalInfo.resumeUrl} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-accent-foreground bg-accent hover:bg-accent-hover rounded-xl shadow-md hover:shadow transition-colors"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      Download Resume PDF
+    </a>
+
+    <!-- Footer Tagline -->
+    <span class="text-xs text-muted-foreground block mt-4 font-medium uppercase tracking-wider">
+      Last updated: June 2026
+    </span>
+  </div>
+</section>

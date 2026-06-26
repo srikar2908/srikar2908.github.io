@@ -1,0 +1,34 @@
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Local env files
+.env
+.env.production
+.env.local
+.env.development
+.env.test
+.env*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.history/
+
+# OS files
+.DS_Store
+Thumbs.db

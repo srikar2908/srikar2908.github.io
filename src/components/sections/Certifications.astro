@@ -1,0 +1,62 @@
+---
+import { certificationsList } from '../../data/certifications.ts';
+---
+
+<section id="certifications" class="py-20 lg:py-28 transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-4 md:px-8">
+    <div class="mb-16 text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-accent mb-2 block">Certifications</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3 text-primary">
+        Professional Credentials
+      </h2>
+      <p class="text-muted-foreground max-w-md mx-auto text-sm sm:text-base">
+        Industry-recognized certifications in cloud computing, databases, machine learning, and artificial intelligence.
+      </p>
+    </div>
+
+    <!-- Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {certificationsList.map((cert) => (
+        <div class="glass-card p-6 flex items-start gap-5 hover:border-accent/30 transition-all duration-300 relative group h-full">
+          
+          <!-- Colored Initials Logo Badge -->
+          <div 
+            class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 text-xs font-black border border-border select-none"
+            style={{ 
+              backgroundColor: `${cert.color}15`, 
+              color: cert.color,
+              borderColor: `${cert.color}30`
+            }}
+          >
+            {cert.initials}
+          </div>
+
+          <!-- Info columns -->
+          <div class="space-y-1.5 w-full">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="text-base font-bold text-primary leading-snug group-hover:text-accent transition-colors">
+                {cert.name}
+              </h3>
+              
+              <!-- Verified Badge -->
+              <span class="inline-flex items-center gap-1 py-0.5 px-1.5 rounded-full bg-success/10 text-success text-[10px] font-semibold shrink-0">
+                Verified ✓
+              </span>
+            </div>
+
+            <span class="text-xs font-bold text-muted-foreground block">
+              {cert.issuer}
+            </span>
+
+            <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground pt-1.5">
+              <span>Issued: <span class="font-medium text-primary/80">{cert.date}</span></span>
+              {cert.credentialId && (
+                <span>ID: <code class="px-1 py-0.5 bg-secondary text-secondary-foreground rounded text-[10px]">{cert.credentialId}</code></span>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

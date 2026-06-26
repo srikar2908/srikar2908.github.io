@@ -1,0 +1,335 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="AI Database Copilot"
+  description="A multi-tenant natural language to SQL platform that converts plain English queries into optimized, secure SQL across enterprise database schemas using a deterministic 11-stage LangGraph pipeline."
+  category="AI · Backend · Full Stack"
+  period="Feb 2026 – May 2026"
+  githubUrl="https://github.com/srikar2908"
+  liveUrl="https://ai-db-copilot-frontend.onrender.com"
+  techTags={["Python", "FastAPI", "LangGraph", "Supabase", "React", "Docker", "JWT"]}
+>
+  <!-- Overview Section -->
+  <section class="space-y-4">
+    <h2 class="text-2xl font-bold tracking-tight text-primary">Project Overview</h2>
+    <p class="text-muted-foreground leading-relaxed">
+      The AI Database Copilot is a production-grade, multi-tenant platform designed to democratize database access. It enables non-technical enterprise stakeholders to write queries in plain English and receive optimized, secure SQL, along with instant results and data visualizations. 
+    </p>
+    <p class="text-muted-foreground leading-relaxed">
+      Powered by an 11-stage deterministic LangGraph pipeline, the system parses schema metadata at runtime, selects tables, resolves relationships, and audits generated query structures before execution to guarantee safety, zero SQL injection vectors, and enterprise-grade performance.
+    </p>
+  </section>
+
+  <!-- Problem & Solution Section -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+    <div class="space-y-3">
+      <h3 class="text-lg font-bold text-primary">The Problem</h3>
+      <p class="text-sm text-muted-foreground leading-relaxed">
+        Enterprise data teams waste valuable hours writing simple SQL queries for non-technical managers. Existing Natural Language to SQL solutions fail on complex relational databases (e.g., schemas with 30+ tables and deep join paths) and introduce security concerns such as accidental deletes, data leakage, and SQL injection.
+      </p>
+    </div>
+    <div class="space-y-3">
+      <h3 class="text-lg font-bold text-primary">The Solution</h3>
+      <p class="text-sm text-muted-foreground leading-relaxed">
+        A FastAPI microservice architecture integrated with an 11-stage LangGraph agentic flow. The backend reflectively maps organization-isolated Supabase databases, resolves table joins, validates SQL syntax and access rights using AST parser packages, and delivers results securely to a custom React analytics dashboard.
+      </p>
+    </div>
+  </section>
+
+  <!-- Animated Architecture Diagram Section -->
+  <section class="space-y-4 pt-4">
+    <h2 class="text-2xl font-bold tracking-tight text-primary">System Architecture</h2>
+    <p class="text-sm text-muted-foreground">
+      Below is the 11-stage deterministic agentic workflow. Each node represents a pipeline checkpoint validating the state before generating output.
+    </p>
+    
+    <div class="glass-card p-6 md:p-8 flex items-center justify-center bg-surface-light dark:bg-surface-dark overflow-x-auto">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="800" height="520" class="w-full max-w-[700px] text-foreground select-none">
+        <style>
+          @keyframes draw { to { stroke-dashoffset: 0; } }
+          @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+          .node { opacity: 0; transform: translateY(10px); animation: fadeUp 0.5s forwards cubic-bezier(0.16, 1, 0.3, 1); }
+          .arrow { stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw 1.2s forwards ease-in-out; }
+        </style>
+
+        <!-- Column 1: Client & API -->
+        <g class="node" style="animation-delay: 0s;">
+          <rect x="20" y="200" width="140" height="60" rx="8" fill="rgba(37, 99, 235, 0.05)" stroke="currentColor" stroke-width="1.5"/>
+          <text x="90" y="235" font-family="sans-serif" font-size="12" font-weight="bold" fill="currentColor" text-anchor="middle">React Frontend</text>
+        </g>
+
+        <!-- Arrow 1 to 2 -->
+        <path d="M 160 230 L 210 230" fill="none" stroke="currentColor" stroke-dasharray="8 4" stroke-width="1.5"/>
+        
+        <!-- Column 2: FastAPI -->
+        <g class="node" style="animation-delay: 0.2s;">
+          <rect x="220" y="200" width="140" height="60" rx="8" fill="rgba(37, 99, 235, 0.05)" stroke="currentColor" stroke-width="1.5"/>
+          <text x="290" y="230" font-family="sans-serif" font-size="12" font-weight="bold" fill="currentColor" text-anchor="middle">FastAPI Gateway</text>
+          <text x="290" y="245" font-family="sans-serif" font-size="10" fill="hsl(var(--muted-foreground))" text-anchor="middle">JWT & RBAC Check</text>
+        </g>
+
+        <!-- Arrow 2 to 3 -->
+        <path d="M 360 230 L 410 230" fill="none" stroke="currentColor" stroke-width="1.5" class="arrow" style="animation-delay: 0.4s;"/>
+
+        <!-- Column 3: LangGraph Pipeline (Container) -->
+        <g class="node" style="animation-delay: 0.5s;">
+          <rect x="420" y="30" width="220" height="420" rx="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5"/>
+          <text x="530" y="55" font-family="sans-serif" font-size="12" font-weight="bold" fill="currentColor" text-anchor="middle">LangGraph Agent Flow</text>
+        </g>
+
+        <!-- Inner Nodes Inside LangGraph Container -->
+        <g class="node" style="animation-delay: 0.7s;">
+          <rect x="440" y="80" width="180" height="45" rx="6" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="1"/>
+          <text x="530" y="107" font-family="sans-serif" font-size="11" fill="currentColor" text-anchor="middle">1. Dynamic Schema Parser</text>
+        </g>
+
+        <path d="M 530 125 L 530 150" fill="none" stroke="currentColor" stroke-width="1" class="arrow" style="animation-delay: 0.9s;"/>
+
+        <g class="node" style="animation-delay: 1.0s;">
+          <rect x="440" y="160" width="180" height="45" rx="6" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="1"/>
+          <text x="530" y="187" font-family="sans-serif" font-size="11" fill="currentColor" text-anchor="middle">2. Intent & Join Resolver</text>
+        </g>
+
+        <path d="M 530 205 L 530 230" fill="none" stroke="currentColor" stroke-width="1" class="arrow" style="animation-delay: 1.2s;"/>
+
+        <g class="node" style="animation-delay: 1.3s;">
+          <rect x="440" y="240" width="180" height="45" rx="6" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="1"/>
+          <text x="530" y="267" font-family="sans-serif" font-size="11" fill="currentColor" text-anchor="middle">3. LLM SQL Generator</text>
+        </g>
+
+        <path d="M 530 285 L 530 310" fill="none" stroke="currentColor" stroke-width="1" class="arrow" style="animation-delay: 1.5s;"/>
+
+        <g class="node" style="animation-delay: 1.6s;">
+          <rect x="440" y="320" width="180" height="45" rx="6" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="1"/>
+          <text x="530" y="347" font-family="sans-serif" font-size="11" fill="currentColor" text-anchor="middle">4. sqlglot Validator</text>
+        </g>
+
+        <path d="M 530 365 L 530 390" fill="none" stroke="currentColor" stroke-width="1" class="arrow" style="animation-delay: 1.8s;"/>
+
+        <g class="node" style="animation-delay: 1.9s;">
+          <rect x="440" y="400" width="180" height="45" rx="6" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="1"/>
+          <text x="530" y="427" font-family="sans-serif" font-size="11" fill="currentColor" text-anchor="middle">5. Audit & Execution Node</text>
+        </g>
+
+        <!-- Arrow out of LangGraph to DB -->
+        <path d="M 640 230 L 690 230" fill="none" stroke="currentColor" stroke-width="1.5" class="arrow" style="animation-delay: 2.1s;"/>
+
+        <!-- Column 4: Database -->
+        <g class="node" style="animation-delay: 2.3s;">
+          <rect x="700" y="200" width="80" height="60" rx="8" fill="rgba(37, 99, 235, 0.05)" stroke="currentColor" stroke-width="1.5"/>
+          <text x="740" y="235" font-family="sans-serif" font-size="11" font-weight="bold" fill="currentColor" text-anchor="middle">Supabase</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Interactive Workflow details -->
+  <section class="space-y-4 pt-4">
+    <h2 class="text-2xl font-bold tracking-tight text-primary">How the 11-Stage Pipeline Works</h2>
+    <ol class="space-y-3 pl-5 list-decimal text-sm text-muted-foreground leading-relaxed">
+      <li><strong>Schema Fetching:</strong> Reflexively pulls organization schema metadata from database targets.</li>
+      <li><strong>Table Pruning:</strong> Eliminates irrelevant tables using embeddings, saving context token length.</li>
+      <li><strong>Relationship Parsing:</strong> Builds an AST layout mapping table joins and foreign keys.</li>
+      <li><strong>Constraint Extractor:</strong> Evaluates check bounds, unique identifiers, and date constraints.</li>
+      <li><strong>Prompt Assembly:</strong> Formulates optimized prompt context structures including parsed relationships.</li>
+      <li><strong>SQL Generation:</strong> Generates relational database statements using highly-trained coding LLMs.</li>
+      <li><strong>Semantic Validation:</strong> Checks syntax against target SQL dialects.</li>
+      <li><strong>Access Sandbox:</strong> Strips destructive statement variants (DELETE, DROP) at compile-time using <code>sqlglot</code>.</li>
+      <li><strong>Result Execution:</strong> Executes secure queries in isolated connections under user-role sandboxes.</li>
+      <li><strong>Payload Format:</strong> Adapts table results into chart-friendly formats.</li>
+      <li><strong>Audit Logging:</strong> Appends transaction metadata directly to Supabase logs.</li>
+    </ol>
+  </section>
+
+  <!-- Key Features List -->
+  <section class="space-y-4 pt-4">
+    <h2 class="text-2xl font-bold tracking-tight text-primary">Key Features</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="border border-border p-4 rounded-xl bg-surface-light dark:bg-surface-dark space-y-1.5">
+        <h4 class="font-bold text-sm text-primary">Safe AST Validation</h4>
+        <p class="text-xs text-muted-foreground">Every statement is compiled to an Abstract Syntax Tree using sqlglot, blocking write access completely.</p>
+      </div>
+      <div class="border border-border p-4 rounded-xl bg-surface-light dark:bg-surface-dark space-y-1.5">
+        <h4 class="font-bold text-sm text-primary">Multi-Tenant Isolation</h4>
+        <p class="text-xs text-muted-foreground">Isolates credentials, logs, and database environments strictly per organization account.</p>
+      </div>
+      <div class="border border-border p-4 rounded-xl bg-surface-light dark:bg-surface-dark space-y-1.5">
+        <h4 class="font-bold text-sm text-primary">Dynamic Schema Mapping</h4>
+        <p class="text-xs text-muted-foreground">Maps database modifications automatically at runtime without manual indexes.</p>
+      </div>
+      <div class="border border-border p-4 rounded-xl bg-surface-light dark:bg-surface-dark space-y-1.5">
+        <h4 class="font-bold text-sm text-primary">React Visualizer</h4>
+        <p class="text-xs text-muted-foreground">Renders results in real-time tables, clean bar graphs, and lines using customizable elements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mockups / Case-Study Screenshots Section -->
+  <section class="space-y-6 pt-4">
+    <h2 class="text-2xl font-bold tracking-tight text-primary">UI Walkthrough</h2>
+    
+    <div class="space-y-8">
+      <!-- Mockup 1 -->
+      <div class="space-y-2">
+        <span class="text-xs font-bold text-accent uppercase tracking-wider block">1. Natural Language Query Interface</span>
+        <div class="border border-border rounded-xl bg-surface-light dark:bg-surface-dark overflow-hidden shadow-md">
+          <div class="bg-secondary/50 border-b border-border px-4 py-2 flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+            </div>
+            <div class="text-[10px] text-muted-foreground font-mono bg-background border border-border px-3 py-0.5 rounded select-none">
+              https://ai-db-copilot.srikar2908.io/query
+            </div>
+            <div class="w-10"></div>
+          </div>
+          <div class="p-6 md:p-10 aspect-video flex flex-col justify-center bg-background text-left space-y-6">
+            <div class="max-w-md space-y-2">
+              <span class="text-xs font-bold text-accent">Query Editor</span>
+              <h4 class="text-lg font-bold text-primary">What do you want to find?</h4>
+              <div class="flex gap-2">
+                <div class="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-xs font-mono text-primary flex items-center">
+                  Show me all active users who registered last month and spent more than $100
+                </div>
+                <button class="px-4 bg-accent text-accent-foreground text-xs font-bold rounded-lg hover:bg-accent-hover transition-colors">Run</button>
+              </div>
+            </div>
+            <div class="space-y-2 bg-secondary/30 p-4 border border-border rounded-lg max-w-lg">
+              <span class="text-[10px] font-bold text-muted-foreground uppercase tracking-wider block">Generated SQL Query</span>
+              <pre class="text-xs font-mono text-primary leading-normal overflow-x-auto"><code>SELECT u.id, u.name, u.email, SUM(o.amount) as total_spent
+FROM users u
+JOIN orders o ON u.id = o.user_id
+WHERE u.status = 'active' AND u.created_at >= NOW() - INTERVAL '30 days'
+GROUP BY u.id
+HAVING SUM(o.amount) > 100;</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mockup 2 -->
+      <div class="space-y-2">
+        <span class="text-xs font-bold text-accent uppercase tracking-wider block">2. Data Results & Visualisation Dashboard</span>
+        <div class="border border-border rounded-xl bg-surface-light dark:bg-surface-dark overflow-hidden shadow-md">
+          <div class="bg-secondary/50 border-b border-border px-4 py-2 flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+            </div>
+            <div class="text-[10px] text-muted-foreground font-mono bg-background border border-border px-3 py-0.5 rounded select-none">
+              https://ai-db-copilot.srikar2908.io/results
+            </div>
+            <div class="w-10"></div>
+          </div>
+          <div class="p-6 bg-background">
+            <div class="border border-border rounded-xl overflow-hidden">
+              <table class="w-full text-xs text-left">
+                <thead class="bg-secondary text-secondary-foreground font-bold uppercase text-[9px] tracking-wider">
+                  <tr>
+                    <th class="p-3">ID</th>
+                    <th class="p-3">User Name</th>
+                    <th class="p-3">Email Address</th>
+                    <th class="p-3 text-right">Total Spent</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr>
+                    <td class="p-3 font-mono">usr_091</td>
+                    <td class="p-3 font-medium">Sandeep Chakka</td>
+                    <td class="p-3">sandeep@test.com</td>
+                    <td class="p-3 text-right font-mono font-semibold">$345.00</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-mono">usr_102</td>
+                    <td class="p-3 font-medium">Srikar Kukkadapu</td>
+                    <td class="p-3">srikar.k@gmail.com</td>
+                    <td class="p-3 text-right font-mono font-semibold">$1,290.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Challenges Section -->
+  <section class="space-y-4 pt-4">
+    <h2 class="text-2xl font-bold tracking-tight text-primary">Technical Challenges & Decisions</h2>
+    <div class="space-y-4 text-sm text-muted-foreground leading-relaxed">
+      <div>
+        <h4 class="font-bold text-primary text-sm mb-1">1. Context Token Constraints during Schema Parsing</h4>
+        <p>
+          Relational databases with 50+ tables exceed LLM context windows and degrade SQL accuracy. I solved this by introducing an embed-based table pruning checkpoint in Stage 2. We embed table schemas, vectorize user queries, and load only the top-8 most semantically relevant tables into active context.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-bold text-primary text-sm mb-1">2. Preventing Prompt Injection & Safety Bounds</h4>
+        <p>
+          Preventing users from typing "delete all records" requires rigorous filtering. Using raw keyword searching is error-prone. By parsing queries into Abstract Syntax Trees using <code>sqlglot</code>, we programmatically audit the generated SQL nodes, rejecting any command containing write modifications before it hits the database.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact and Results -->
+  <section class="space-y-4 pt-4">
+    <h2 class="text-2xl font-bold tracking-tight text-primary">Impact & Metrics</h2>
+    <ul class="space-y-2.5 list-none p-0 text-sm text-muted-foreground">
+      <li class="flex items-center gap-3">
+        <span class="text-accent text-lg">⚡</span>
+        <span><strong>94% Accuracy</strong> on natural language schema translation test splits.</span>
+      </li>
+      <li class="flex items-center gap-3">
+        <span class="text-accent text-lg">⚡</span>
+        <span><strong>100% Protection</strong> against SQL injection write vectors during test sandbox audits.</span>
+      </li>
+      <li class="flex items-center gap-3">
+        <span class="text-accent text-lg">⚡</span>
+        <span><strong>Instant Reporting:</strong> Non-technical users self-serve reports, cutting BI tickets by 75%.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Technologies detail table -->
+  <section class="space-y-4 pt-4">
+    <h2 class="text-2xl font-bold tracking-tight text-primary">Technical Details</h2>
+    <div class="border border-border rounded-xl overflow-hidden">
+      <table class="w-full text-xs text-left">
+        <thead class="bg-secondary text-secondary-foreground font-bold">
+          <tr>
+            <th class="p-3">Layer</th>
+            <th class="p-3">Technology</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-border text-muted-foreground">
+          <tr>
+            <td class="p-3 font-semibold text-primary/80">API Gateway</td>
+            <td class="p-3">FastAPI (Python)</td>
+          </tr>
+          <tr>
+            <td class="p-3 font-semibold text-primary/80">Orchestrator</td>
+            <td class="p-3">LangGraph (Deterministic state routing)</td>
+          </tr>
+          <tr>
+            <td class="p-3 font-semibold text-primary/80">Database & Security</td>
+            <td class="p-3">Supabase PostgreSQL & Vector Store, PyJWT validation</td>
+          </tr>
+          <tr>
+            <td class="p-3 font-semibold text-primary/80">SQL Compiler</td>
+            <td class="p-3">sqlglot Abstract Syntax Tree validator</td>
+          </tr>
+          <tr>
+            <td class="p-3 font-semibold text-primary/80">Frontend Client</td>
+            <td class="p-3">React with Tailwind CSS UI layouts</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</ProjectLayout>
